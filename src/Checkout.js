@@ -8,7 +8,6 @@ import {
 } from 'semantic-ui-react';
 import PayButton from './buttons/PayButton';
 import Order from './Order';
-import OrdersService from './service/OrdersService';
 import Price from './utils/Price';
 
 class Checkout extends Component {
@@ -32,10 +31,7 @@ class Checkout extends Component {
    */
 
   handlePay () {
-    OrdersService.clear(() => {
-      console.log('TODO');
-      // TODO: redirect to Homepage
-    })
+    // TODO
   }
 
   renderOrder (order) {
