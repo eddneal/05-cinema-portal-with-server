@@ -30,7 +30,7 @@ app.use(cookieSession({
 }));
 app.use(cors({
   origin: (origin, callback) => {
-    if (origin.includes('localhost')) {
+    if (!origin || origin.includes('localhost')) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed origin!'));
