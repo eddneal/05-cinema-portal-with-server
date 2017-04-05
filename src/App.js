@@ -9,8 +9,31 @@ import MovieList from './MovieList';
 import Checkout from './Checkout';
 import PurchasePage from './PurchasePage';
 import './App.css';
+import axios from './api/axios';
 
 class App extends Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      user: null
+    };
+  }
+
+  componentDidMount () {
+    /*
+      TODO this login mechanism looks weird, try to implement login form
+     */
+    const payload = {
+      username: 'john',
+      password: 'abc'
+    };
+
+    axios.post('/login', payload).then(
+      (response) => this.setState({user: payload})
+    );
+  }
+
   getMenuItem(path, label, isHeader = false) {
     return ({match}) => {
       return (

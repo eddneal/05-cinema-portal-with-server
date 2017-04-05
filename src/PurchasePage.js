@@ -47,7 +47,8 @@ class PurchasePage extends Component {
   }
 
   handleBuy () {
-    // TODO call api
+    // TODO call rest api (POST /orders) to save order
+    // then you can redirect to homepage by calling this.props.history.push('/');
   }
 
   getImageSrc () {
@@ -127,6 +128,7 @@ class PurchasePage extends Component {
 }
 
 PurchasePage.propTypes = {
+  history: PropTypes.object.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired

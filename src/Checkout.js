@@ -6,7 +6,6 @@ import {
   Divider,
   Item
 } from 'semantic-ui-react';
-import PayButton from './buttons/PayButton';
 import Order from './Order';
 import Price from './utils/Price';
 
@@ -23,35 +22,28 @@ class Checkout extends Component {
   /*
     TODO:
 
-    When this component is rendered, use OrderService to get all orders
-    and render them
+    When this component is rendered, call REST API to retrieve all orders (GET /orders).
+    You also need movies to display images & titles (GET /movies)
 
-    Would be also nice to show loading while orders are being fetched,
-    hint: http://react.semantic-ui.com/elements/loader#loader-example-text
+    Please note that you need to be logged in to perform the API request.
    */
 
-  handlePay () {
-    // TODO
+  handleOrderDelete (order) {
+    // TODO call REST API to delete order (DELETE /orders/:id)
+    console.log(order);
   }
 
   renderOrder (order) {
     return (
-      <Order key={order.id} order={order} />
+      <Order key={order.id} order={order} onRemoveOrder={this.handleOrderDelete} />
     );
   }
 
   render() {
     /*
-     * TODO
-     * Get real orders from OrdersService when component is shown from OrdersService:
-     *
-     * OrdersService.getAll(callback);
-     *
-     * callback is then called with two arguments:
-     *  - error (loading may fail from time to time)
-     *  - array of orders
+     * TODO display orders
      */
-    const orders = [{id: 1}, {id: 2}].map(this.renderOrder);
+    const orders = [{id: 1}, {id: 2}].map((order) => this.renderOrder(order));
 
     return (
       <Container>
@@ -65,7 +57,6 @@ class Checkout extends Component {
           <Divider section/>
           <div style={{float: 'right'}}>
             <Price price={NaN} label='Total amount' />
-            <PayButton onClick={this.handlePay} />
           </div>
           <div style={{clear: 'both'}}></div>
         </Segment>
