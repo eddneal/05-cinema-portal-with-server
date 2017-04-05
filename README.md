@@ -5,8 +5,11 @@ Simple educational app for practising React.js fundamentals
 
 ## The goal
 
-Implement all TODOs in the code, so it's possible to buy tickets,
-proceed to checkout and pay.
+Implement all TODOs in the code.
+
+- Implement login form to enable user to log-in
+- User should be able to buy tickets only if he/she is logged
+- Logged user can see all orders
 
 ## Practise & learn
 
