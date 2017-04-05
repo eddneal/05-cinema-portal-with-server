@@ -28,7 +28,16 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => {
+    if (origin.includes('localhost')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed origin!'));
+    }
+  },
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 
