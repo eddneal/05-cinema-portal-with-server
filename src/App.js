@@ -4,7 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import {Menu} from 'semantic-ui-react';
+import {Menu, Button} from 'semantic-ui-react';
 import MovieList from './MovieList';
 import Checkout from './Checkout';
 import PurchasePage from './PurchasePage';
@@ -61,9 +61,10 @@ class App extends Component {
               path='/checkout'
               children={this.getMenuItem('/checkout', 'Checkout')}
             />
+            <Menu.Item position='right'><Button primary>Login</Button></Menu.Item>
           </Menu>
           <Route exact path='/' component={MovieList}/>
-          <Route path='/checkout' component={Checkout} />
+          <Route path='/checkout' render={(props) => <Checkout user={this.state.user} />} />
           <Route path='/movie/:id/buy' component={PurchasePage} />
         </div>
       </Router>

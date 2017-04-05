@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {
   Container,
   Header,
@@ -64,5 +64,9 @@ class Checkout extends Component {
     );
   }
 }
+
+Checkout.propTypes = {
+  user: PropTypes.object
+};
 
 export default Checkout;
